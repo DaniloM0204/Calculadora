@@ -1,11 +1,12 @@
 from tkinter import *
-"Times New Roman" == "TNW"
+"Times New Roman" == "TNR"
 
 class App:
     def __init__(self,master = None):
         self.master = master
         self.master.title("Calculadora Básica") #Título da calculadora
         self.master.geometry("350x350") # Tamanho
+        self.master.configure(bg = "#f0f0f0")
 
         # Criando os widgets
         self.criar_widget()
@@ -14,8 +15,12 @@ class App:
         #Criando a tela
         self.tela =  Entry(self.master,
                            width=20,
-                           font=("TNW", 20),
-                           justify="center")
+                           font=("TNR", 20),
+                           justify="left",
+                           bd = 10,
+                           relief=RIDGE,
+                           fg="#00fc22",
+                           bg="#000000")
         self.tela.grid(row=0,
                        column=0,
                        columnspan=4,
@@ -33,10 +38,24 @@ class App:
         coluna = 0
         for botao in botoes:
             if botao == '=':
-                Button(self.master, text=botao, width=10, height=2, command=self.calcular).grid(row=linha, column=coluna, columnspan=2)
+                Button(self.master,
+                        text=botao,
+                        width=10,
+                        height=2,
+                        font = ("TNR",14,"bold"),
+                        fg="white",
+                        command=self.calcular).grid(row=linha,
+                                                    column=coluna,
+                                                    columnspan=2)
                 coluna += 1
             else:
-                Button(self.master, text=botao, width=5, height=2, command=lambda b=botao: self.add_caractere(b)).grid(row=linha, column=coluna)
+                Button(self.master,
+                       text=botao,
+                       width=5,
+                       height=2,
+                       font = ("TNR",14,"bold"),
+                       bg="#f0f0f0",
+                       command=lambda b=botao: self.add_caractere(b)).grid(row=linha, column=coluna)
             coluna += 1
             if coluna > 3:
                 coluna = 0
