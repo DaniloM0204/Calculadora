@@ -5,7 +5,7 @@ class App:
     def __init__(self,master = None):
         self.master = master
         self.master.title("Calculadora Básica") #Título da calculadora
-        self.master.geometry("350x350") # Tamanho
+        self.master.geometry("400x500") # Tamanho
         self.master.configure(bg = "#f0f0f0")
 
         # Criando os widgets
@@ -43,7 +43,7 @@ class App:
                         width=10,
                         height=2,
                         font = ("TNR",14,"bold"),
-                        fg="white",
+                        fg="black",
                         command=self.calcular).grid(row=linha,
                                                     column=coluna,
                                                     columnspan=2)
@@ -61,7 +61,7 @@ class App:
                 coluna = 0
                 linha += 1
         # Limpando a tela
-        Button(self.master,text="Limpar", width=5,height=2,command=self.limpar).grid(row=linha,column=coluna)
+        Button(self.master,text="Limpar", width=8,height=4,command=self.limpar).grid(row=linha,column=coluna)
 
     def add_caractere(self,c):
         self.tela.insert(END,c)
